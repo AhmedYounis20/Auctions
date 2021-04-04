@@ -1,0 +1,16 @@
+{% extends 'auctions/layout.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href='{% static 'auctions/createlisting.css' %}'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+{% endblock %}
+{% block body %}
+<form action="/createlisting" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+</table>
+    <input type="hidden" id="creator" name="creator" value="{{user.username}}">
+        <input type="submit" value="Submit" class='btn btn-primary'>
+</form>
+{% endblock %}

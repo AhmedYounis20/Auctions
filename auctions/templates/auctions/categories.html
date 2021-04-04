@@ -1,0 +1,10 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+{% if not lists %}
+<h1> no current lists to have catigories </h1>
+    {% else %}
+    {% for i in cat %}
+    <h1><a href='categories/{{i}}' >{{i}}</a></h1>
+    {% endfor %}
+{% endif %}
+{% endblock %}

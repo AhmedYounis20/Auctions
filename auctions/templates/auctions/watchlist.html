@@ -1,0 +1,27 @@
+{% extends 'auctions/layout.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href='{% static 'auctions/productslist.css' %}'>
+{% endblock %}
+{% block body %}
+{% if not watchlist|length or watchlist == None  %}
+no current watchlists 
+{% else %}
+{% for watch in watchlist %}
+<div class=' container-fluid '>
+    <table class='table table-striped border border-info' style="padding-top: 10px;">
+    <tr>
+        <td style="width: 180px;" >
+    <img src="{{watch.product.product_image_url}}" class='img-thumbnail' style="padding-right: 2px;" ></td>
+    <td>
+    <p class='name'><a href='/listings/{{watch.product.id}}' class='name'>{{watch.product.productname}}</a></p>
+    <p class='price'>price: ${{watch.product.product_price}}</p>
+    <p class='description'> {{watch.product.productdescription}}</p>
+    <p class='time'>{{watch.product.creationtime}}</p>
+</td>
+</tr>
+
+</table>
+</div>{% endfor %}
+{% endif %}
+{% endblock %}

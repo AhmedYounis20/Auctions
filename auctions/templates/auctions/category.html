@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href='{% static 'auctions/productslist.css' %}'>
+{% endblock %}
+{% block body %}
+{% for i in cat %}
+<div class='container-fluid'>
+    <table class='table table-striped border border-info' style="padding-top: 10px;">
+    <tr>
+        <td style="width: 180px;">
+    <img src="{{i.product_image_url}}"  class='img-thumbnail' style="padding-right: 2px;"></td>
+    <td>
+    <p class='name'><a href='/listings/{{i.id}}' class='name'>{{i.productname}}</a></p>
+    <p class='price'>price: ${{i.product_price}}</p>
+    <p class='description'> {{i.productdescription}}</p>
+    <p class='time'>{{i.creationtime}}</p>
+</td>
+</tr>
+
+</table>
+{% endfor %}
+{% endblock %}
